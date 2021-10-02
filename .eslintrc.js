@@ -21,5 +21,12 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
+    ['padding-line-between-statements']: [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'multiline-const' },
+      { blankLine: 'always', prev: 'const', next: 'return' },
+      { blankLine: 'always', prev: '*', next: 'export' },
+      { blankLine: 'always', prev: '*', next: 'multiline-expression' },
+    ],
   },
 };
