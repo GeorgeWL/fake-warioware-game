@@ -1,0 +1,16 @@
+.heart {
+  height: 100px;
+  width: 100px;
+  border: 1px solid red;
+  &--hardcore {
+    filter: invert(180);
+  }
+  &--small {
+    height: 50px;
+    width: 50px;
+  }
+  &--large {
+    height: 200px;
+    width: 200px;
+  }
+}
