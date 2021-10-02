@@ -26,6 +26,8 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'multiline-const' },
       { blankLine: 'always', prev: 'const', next: 'return' },
       { blankLine: 'always', prev: '*', next: 'export' },
+      { blankLine: 'always', prev: 'import', next: '*' },
+      { blankLine: 'never', prev: 'import', next: 'import' },
       { blankLine: 'always', prev: '*', next: 'multiline-expression' },
     ],
   },
