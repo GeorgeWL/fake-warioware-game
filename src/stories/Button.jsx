@@ -8,10 +8,12 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary
     ? 'storybook-button--primary'
     : 'storybook-button--secondary';
+
   const backgroundColorStyle =
     typeof backgroundColor === 'string' && backgroundColor
       ? { backgroundColor }
-      : {};
+      : null;
+
   return (
     <button
       type='button'
