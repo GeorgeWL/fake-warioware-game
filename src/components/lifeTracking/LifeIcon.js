@@ -13,7 +13,7 @@ const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor='red', hardcore
     ),
     style: { 
       fill: backgroundColor,
-      filter: isHardCore&& `drop-shadow(1px 2px 5px ${hardcoreBorderColor})` 
+      filter: isHardCore && `drop-shadow(1px 2px 5px ${hardcoreBorderColor})` 
     },
   };
   switch (iconName) {
@@ -30,7 +30,6 @@ const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor='red', hardcore
         {...commonProps}
       />
     );
-  
   }
 };
 
