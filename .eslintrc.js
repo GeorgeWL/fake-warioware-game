@@ -21,7 +21,7 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    ['padding-line-between-statements']: [
+    'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'multiline-const' },
       { blankLine: 'always', prev: 'const', next: 'return' },
@@ -30,5 +30,7 @@ module.exports = {
       { blankLine: 'never', prev: 'import', next: 'import' },
       { blankLine: 'always', prev: '*', next: 'multiline-expression' },
     ],
+    'key-spacing': ['error',{afterColon: true}],
+    'comma-spacing': ['error', { 'before': false, 'after': true }]
   },
 };
