@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './link.module.scss';
 
-const Link = ({ href, newTab = true, type = 'primary',disabled, children }, ...rest) => {
+const Link = ({ href, newTab = true, type = 'primary',disabled, children }) => {
   const newTabProps = newTab
     ? { target: '_blank', rel: 'noreferrer noopener' }
     : {};
@@ -10,9 +10,8 @@ const Link = ({ href, newTab = true, type = 'primary',disabled, children }, ...r
   return (
     <a
       href={href}
-      className={classNames(styles.link, type && styles[`link--${type}`])}
-      {...{ newTabProps, ...rest }}
-      disabled={disabled}
+      className={classNames(styles.link, type && styles[`link--${type}`],disabled&&styles['link--disabled'])}
+      {...newTabProps}
     >
       {children}
     </a>

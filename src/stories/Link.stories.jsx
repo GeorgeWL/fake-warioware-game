@@ -4,10 +4,9 @@ import Link from '../components/Link';
 export default {
   title: 'Generic/Link',
   component: Link,
-  args:{
-    children:'Link Text',
-    href:'https://example.org',
-    disabled:false
+  args: {
+    children: 'Link Text',
+    href: 'https://example.org',
   }
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
@@ -19,7 +18,7 @@ export const Primary = Template.bind({});
 
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  type:'primary'
+  type: 'primary'
 };
 
 export const Secondary = Template.bind({});
