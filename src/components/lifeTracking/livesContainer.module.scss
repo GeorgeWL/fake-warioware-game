@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &.isFlashing {
+    svg {
+      animation: heartBeat 1s infinite ease-in-out;
+      @for $i from 1 through 100 {
+        &:nth-child(#{$i}n) {
+          animation-delay: #{$i * 1}s;
+        }
+      }
+    }
+  }
+}
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.2);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.2);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
