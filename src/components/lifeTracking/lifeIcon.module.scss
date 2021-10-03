@@ -1,10 +1,7 @@
-.heart {
+.icon {
   height: 100px;
   width: 100px;
-  border: 1px solid red;
-  &--hardcore {
-    filter: invert(180);
-  }
+  transition: filter 0.8s ease-in-out, height 0.8s linear;
   &--small {
     height: 50px;
     width: 50px;
