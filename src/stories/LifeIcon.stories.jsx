@@ -4,9 +4,14 @@ import LifeIcon from '../components/lifeTracking/LifeIcon';
 export default {
   title: 'LifeTracking/LifeIcon',
   component: LifeIcon,
+  args: {
+    iconName: 'heart',
+    size: 'medium'
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
+    hardcoreBorderColor: { control: 'color' },
   },
 };
 
