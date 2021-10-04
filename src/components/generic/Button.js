@@ -5,14 +5,15 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  isPrimary, backgroundColor, textColor, size, children, ...props }) => {
+const Button = ({  isPrimary, primaryColor,  secondaryColor, size, children, ...props }) => {
 
   const backgroundColorStyle =
-    typeof backgroundColor === 'string' && backgroundColor
-      ? { backgroundColor }
+    typeof primaryColor === 'string' && primaryColor
+      ? { backgroundColor: isPrimary ? primaryColor : secondaryColor }
       : {};
-  const textColorStyle = typeof textColor ==='string' && textColor ? { color: textColor } : {};
-  const styleObject = { ...backgroundColorStyle, ...textColorStyle };
+  const textColorStyle = typeof secondaryColor ==='string' && secondaryColor ? { color: isPrimary ? secondaryColor : primaryColor } : {};
+  const borderColorStyle = typeof primaryColor ==='string' && primaryColor ? { borderColor: isPrimary ? 'transparent' : primaryColor } : {};
+  const styleObject = { ...backgroundColorStyle, ...textColorStyle, ...borderColorStyle };
 
   return (
     <button
@@ -34,11 +35,11 @@ Button.propTypes = {
   /**
    * What background color to use
    */
-  backgroundColor: PropTypes.string,
+  primaryColor: PropTypes.string,
   /**
    * What background color to use
    */
-  textColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
   /**
    * How large should the button be?
    */
@@ -55,8 +56,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  backgroundColor: '#00c0ff',
-  textColor: 'white',
+  primaryColor: '#00c0ff',
+  secondaryColor: 'white',
   primary: false,
   size: 'medium',
   onClick: undefined,

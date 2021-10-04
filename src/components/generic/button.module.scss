@@ -6,40 +6,37 @@
   cursor: pointer;
   display: inline-block;
   line-height: 1;
-  transition: filter .8s ease-in-out, opacity .2s linear;
-  &--primary {
-    color: white;
-    background-color: #1ea7fd;
-  }
-  &--secondary {
-    color: #333;
-    background-color: transparent;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  }
+  transition: filter .8s ease-in-out, opacity .2s linear, border-color .2s linear, color .2 linear, background-color .2s linear;
+  border-width: 1px;
+  border-style: solid;
+ 
   &--small {
     font-size: 12px;
     padding: 10px 16px;
   }
+
   &--medium {
     font-size: 14px;
     padding: 11px 20px;
   }
+
   &--large {
     font-size: 16px;
     padding: 12px 24px;
   }
-   &--disabled,
-   &:disabled{
+
+  &--disabled,
+  &:disabled{
       opacity: 0.25;
       pointer-events: none;
-   }
-   &:hover,
-   &:focus,
-   &:focus-within{
+  }
+  &:hover,
+  &:focus,
+  &:focus-within{
     opacity: .9;
+    filter: drop-shadow(1px 2px 5px rgba(0,0,0,.1));
+  }
+  &:active{
     filter: drop-shadow(1px 2px 5px rgba(0,0,0,.2));
-   }
-   &:active{
-     filter: drop-shadow(1px 2px 5px rgba(0,0,0,.3));
-   }
+  }
 }
