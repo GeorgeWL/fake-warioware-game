@@ -8,7 +8,6 @@ const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor='red', hardcore
   const commonProps = {
     className: classNames(
       styles.icon,
-      isHardCore && styles['icon--hardcore'],
       styles[`icon--${size}`]
     ),
     style: {

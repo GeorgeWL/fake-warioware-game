@@ -3,7 +3,11 @@ import TimeDisplay from '../components/timeTracking/TimeDisplay';
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'TimeTracking/TimeDisplay',
-  component: TimeDisplay
+  component: TimeDisplay,
+  argTypes: {
+    faceBorderColor: { control: 'color' },
+    handColor: { control: 'color' },
+  },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
