@@ -30,7 +30,10 @@ module.exports = {
       { blankLine: 'never', prev: 'import', next: 'import' },
       { blankLine: 'always', prev: '*', next: 'multiline-expression' },
     ],
-    'key-spacing': ['error',{afterColon: true}],
-    'comma-spacing': ['error', { 'before': false, 'after': true }]
+    'key-spacing': ['error', {afterColon: true}],
+    'comma-spacing': ['error', { 'before': false, 'after': true }],
+    'space-in-brackets': ['error', 'always', {
+      'propertyName': false
+    }]
   },
 };
