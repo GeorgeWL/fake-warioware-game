@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './livesContainer.module.scss';
 
-const LivesContainer = ({count, isFlashing, isHardcore})=>(
+const LivesContainer = ({ count, isFlashing, isHardcore })=>(
   <div
     className={classNames(styles.container, isFlashing && styles.isFlashing)}
   >
     {Array.from(Array(count))
       .map(index => (
         <LifeIcon
-          key={`life-${index}`} 
+          key={`life-${index}`}
           isHardCore={isHardcore}
         />
       ))}

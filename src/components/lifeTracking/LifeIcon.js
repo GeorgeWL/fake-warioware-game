@@ -11,21 +11,21 @@ const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor='red', hardcore
       isHardCore && styles['icon--hardcore'],
       styles[`icon--${size}`]
     ),
-    style: { 
+    style: {
       fill: backgroundColor,
-      filter: isHardCore && `drop-shadow(1px 2px 5px ${hardcoreBorderColor})` 
+      filter: isHardCore && `drop-shadow(1px 2px 5px ${hardcoreBorderColor})`
     },
   };
   switch (iconName) {
   case 'star':
-    return( 
+    return (
       <Star
         {...commonProps}
       />
     );
   case 'heart':
   default:
-    return(
+    return (
       <Heart
         {...commonProps}
       />
@@ -37,8 +37,8 @@ LifeIcon.propTypes = {
   isHardCore: PropTypes.bool,
   backgroundColor: PropTypes.string,
   hardcoreBorderColor: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  iconName: PropTypes.oneOf(['heart', 'star'])
+  size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
+  iconName: PropTypes.oneOf([ 'heart', 'star' ])
 };
 
 export default LifeIcon;

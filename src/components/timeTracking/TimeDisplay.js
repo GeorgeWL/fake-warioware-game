@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ReactComponent as Clock } from '../../assets/clock.svg';
 
-const TimeDisplay = ({ isActive, totalTime, onTimerComplete})=>{
-  const [timeRemaining, setTimeRemaining] = useState(totalTime);
+const TimeDisplay = ({ isActive, totalTime, onTimerComplete })=>{
+  const [ timeRemaining, setTimeRemaining ] = useState(totalTime);
+  const clockRef = useRef();
 
   useEffect(()=>{
     let interval;
@@ -10,6 +12,7 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete})=>{
       interval =  setInterval(()=>{
         if(timeRemaining>0){
           setTimeRemaining(timeRemaining-1);
+          console.log('ref', clockRef);
         } else {
           onTimerComplete();
           clearInterval(interval);
@@ -20,11 +23,13 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete})=>{
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, timeRemaining]);
- 
+  }, [ isActive, timeRemaining ]);
+
 
   return(
-    <progress min='0' max={totalTime} value={timeRemaining}/>
+    <Clock
+      ref={clockRef}
+    />
   );
 };
 
