@@ -5,7 +5,7 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  isPrimary, backgroundColor, textColor, size, label, ...props }) => {
+const Button = ({  isPrimary, backgroundColor, textColor, size, children, ...props }) => {
 
   const backgroundColorStyle =
     typeof backgroundColor === 'string' && backgroundColor
@@ -21,7 +21,7 @@ const Button = ({  isPrimary, backgroundColor, textColor, size, label, ...props 
       style={styleObject}
       {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
@@ -46,7 +46,7 @@ Button.propTypes = {
   /**
    * Button contents
    */
-  label: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Optional click handler
    */
@@ -55,7 +55,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  backgroundColor: 'lightblue',
+  backgroundColor: '#00c0ff',
   textColor: 'white',
   primary: false,
   size: 'medium',
