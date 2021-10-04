@@ -25,7 +25,13 @@ const GameContainer = ()=> {
       <LivesContainer
         count={lives}
       />
-      <Button>Start!</Button>
+      <Button
+        onClick={()=>{
+          lives>0&&setActive(true);
+        }}
+      >
+        Start!
+      </Button>
     </div>
   );
 };
