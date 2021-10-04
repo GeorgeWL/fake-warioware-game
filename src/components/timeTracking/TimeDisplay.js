@@ -5,6 +5,8 @@ import { ReactComponent as Clock } from '../../assets/clock.svg';
 const TimeDisplay = ({ isActive, totalTime, onTimerComplete })=>{
   const [ timeRemaining, setTimeRemaining ] = useState(totalTime);
   const clockRef = useRef();
+  const totalTimePercentage = (timeRemaining / totalTime).toFixed(2);
+  const clockDegrees = (360 * totalTimePercentage);
 
   useEffect(()=>{
     let interval;
@@ -12,12 +14,12 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete })=>{
       interval =  setInterval(()=>{
         if(timeRemaining>0){
           setTimeRemaining(timeRemaining-1);
-          console.log('ref', clockRef);
         } else {
           onTimerComplete();
           clearInterval(interval);
         }
-      }, 1000);
+        clockRef.current.getElementById('hand').setAttribute('transform', `rotate(${clockDegrees} 50 50)`);
+      }, 100);
     }else{
       setTimeRemaining(totalTime);
       clearInterval(interval);
@@ -37,6 +39,10 @@ TimeDisplay.propTypes={
   isActive: PropTypes.bool.isRequired,
   totalTime: PropTypes.number.isRequired,
   onTimerComplete: PropTypes.func.isRequired
+};
+
+TimeDisplay.defaultProps ={
+  isActive: false
 };
 
 export default TimeDisplay;

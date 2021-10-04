@@ -1,6 +1,6 @@
 <svg id="clock" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 50 50;" xml:space="preserve">
   <circle id="face" cx="50" cy="50" r="45" stroke='red' fill='none'/>
   <g id="hands">
-    <line id="sec" x1="50" y1="50" x2="50" y2="16" strokeWidth='2' stroke='red' />
+    <line id="hand" x1="50" y1="50" x2="50" y2="16" strokeWidth='2' stroke='red' />
   </g>
 </svg>
