@@ -15,12 +15,12 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: [ 'react' ],
   rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
+    indent: [ 'error', 2 ],
+    'linebreak-style': [ 'error', 'unix' ],
+    quotes: [ 'error', 'single' ],
+    semi: [ 'error', 'always' ],
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'multiline-const' },
@@ -30,10 +30,10 @@ module.exports = {
       { blankLine: 'never', prev: 'import', next: 'import' },
       { blankLine: 'always', prev: '*', next: 'multiline-expression' },
     ],
-    'key-spacing': ['error', {afterColon: true}],
-    'comma-spacing': ['error', { 'before': false, 'after': true }],
-    'space-in-brackets': ['error', 'always', {
-      'propertyName': false
-    }]
+    'key-spacing': [ 'error', { afterColon: true } ],
+    'comma-spacing': [ 'error', { 'before': false, 'after': true } ],
+    'object-curly-spacing': [ 'error', 'always' ],
+    'array-bracket-spacing': [ 'error', 'always' ],
+    'no-trailing-spaces': [ 'error', { 'ignoreComments': true } ]
   },
 };
