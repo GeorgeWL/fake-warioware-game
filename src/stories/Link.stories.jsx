@@ -1,4 +1,4 @@
-import Link from '../components/Link';
+import Link from '../components/generic/Link';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
