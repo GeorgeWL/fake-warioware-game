@@ -1,0 +1,17 @@
+.clock{
+  height: 100px;
+  width: 100px;
+  transition: filter 0.8s ease-in-out, height 0.8s linear, ;
+
+  &--small {
+    height: 50px;
+    width: 50px;
+  }
+  &--large {
+    height: 200px;
+    width: 200px;
+  }
+}
+#hand{
+  transform: all .1s ease;
+}
