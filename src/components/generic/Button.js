@@ -5,7 +5,7 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  isPrimary, backgroundColor, textColor, size, label, disabled, ...props }) => {
+const Button = ({  isPrimary, backgroundColor, textColor, size, label, ...props }) => {
 
   const backgroundColorStyle =
     typeof backgroundColor === 'string' && backgroundColor
@@ -19,7 +19,6 @@ const Button = ({  isPrimary, backgroundColor, textColor, size, label, disabled,
       type='button'
       className={classNames(styles.button, styles[`button--${size}`], styles[`button--${isPrimary ? 'primary' : 'secondary' }`] )}
       style={styleObject}
-      disabled={disabled}
       {...props}
     >
       {label}
