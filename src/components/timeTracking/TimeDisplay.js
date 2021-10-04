@@ -30,8 +30,8 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', fa
   }, [ isActive, timeRemaining ]);
 
   if(clockRef&&clockRef.current){
-    clockRef.current.getElementById('hand').setAttribute('stroke', handColor );
-    clockRef.current.getElementById('face').setAttribute('stroke', faceBorderColor);
+    clockRef?.current?.getElementById('hand')?.setAttribute('stroke', handColor );
+    clockRef?.current?.getElementById('face')?.setAttribute('stroke', faceBorderColor);
   }
   return(
     <Clock
