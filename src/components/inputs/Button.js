@@ -5,20 +5,20 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  isPrimary, primaryColor,  secondaryColor, size, children, ...props }) => {
+const Button = ({  primary, primaryColor,  secondaryColor, size, children, ...props }) => {
 
   const backgroundColorStyle =
     typeof primaryColor === 'string' && primaryColor
-      ? { backgroundColor: isPrimary ? primaryColor : secondaryColor }
+      ? { backgroundColor: primary ? primaryColor : secondaryColor }
       : {};
-  const textColorStyle = typeof secondaryColor ==='string' && secondaryColor ? { color: isPrimary ? secondaryColor : primaryColor } : {};
-  const borderColorStyle = typeof primaryColor ==='string' && primaryColor ? { borderColor: isPrimary ? 'transparent' : primaryColor } : {};
+  const textColorStyle = typeof secondaryColor ==='string' && secondaryColor ? { color: primary ? secondaryColor : primaryColor } : {};
+  const borderColorStyle = typeof primaryColor ==='string' && primaryColor ? { borderColor: primary ? 'transparent' : primaryColor } : {};
   const styleObject = { ...backgroundColorStyle, ...textColorStyle, ...borderColorStyle };
 
   return (
     <button
       type='button'
-      className={classNames(styles.button, styles[`button--${size}`], styles[`button--${isPrimary ? 'primary' : 'secondary' }`] )}
+      className={classNames(styles.button, styles[`button--${size}`], styles[`button--${primary ? 'primary' : 'secondary' }`] )}
       style={styleObject}
       {...props}
     >
@@ -31,7 +31,7 @@ Button.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
-  isPrimary: PropTypes.bool,
+  primary: PropTypes.bool,
   /**
    * What background color to use
    */

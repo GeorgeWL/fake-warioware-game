@@ -11,7 +11,7 @@ export default {
   },
   args: {
     size: 'medium',
-    isPrimary: true
+    primary: true
   }
 };
 
@@ -28,7 +28,7 @@ Primary.args = {
 export const Secondary = Template.bind({});
 
 Secondary.args = {
-  isPrimary: false,
+  primary: false,
   children: 'Button',
 };
 
