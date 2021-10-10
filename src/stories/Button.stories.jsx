@@ -1,8 +1,8 @@
-import Button from '../components/generic/Button';
+import Button from '../components/inputs/Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Generic/Button',
+  title: 'Inputs/Button',
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

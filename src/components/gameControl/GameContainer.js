@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../generic/Button';
+import Button from '../inputs/Button';
 import LivesContainer from '../lifeTracking/LivesContainer';
 import TimeDisplay from '../timeTracking/TimeDisplay';
 import GameCanvas from './GameCanvas';
