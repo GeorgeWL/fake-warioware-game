@@ -1,18 +1,19 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import uuid from '../../uuid';
 import styles from './checkbox.module.scss';
 
 
 const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tickIcon, id }) => {
   const [ checked, setChecked ] = useState(false);
-  if(id){
-    id = uuid();
-  }
+
+  useCallback(
+    () => onClick(checked),
+    [ checked ],
+  );
 
   const handleClick = ()=>{
-    onClick(checked);
     setChecked(prevState=>!prevState);
   };
 
@@ -56,12 +57,12 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  primary: true,
   accentColor: '#00c0ff',
   iconColor: 'white',
   size: 'medium',
   disabled: false,
-  tickIcon: '✔'
+  tickIcon: '✔',
+  id: uuid()
 };
 
 export default Checkbox;

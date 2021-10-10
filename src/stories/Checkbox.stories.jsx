@@ -11,6 +11,7 @@ export default {
     size: 'medium',
     accentColor: '#61dafb',
     iconColor: 'white',
+    disabled: false,
   }
 };
 
