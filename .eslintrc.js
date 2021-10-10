@@ -35,7 +35,7 @@ module.exports = {
     'object-curly-spacing': [ 'error', 'always' ],
     'array-bracket-spacing': [ 'error', 'always' ],
     'no-trailing-spaces': [ 'error', { 'ignoreComments': true } ],
-    'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
+    'react/jsx-max-props-per-line': [ 'error', { when: 'multiline' } ],
     'arrow-body-style': [ 'error', 'as-needed' ],
     'multiline-ternary': [ 'error', 'always-multiline' ],
     'space-infix-ops': 'error'

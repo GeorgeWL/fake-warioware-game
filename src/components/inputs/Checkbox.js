@@ -8,13 +8,14 @@ import styles from './checkbox.module.scss';
 const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tickIcon, id }) => {
   const [ checked, setChecked ] = useState(false);
 
-  useCallback(
-    () => onClick(checked),
+  const onClickMemoised = useCallback(
+    () => onClick(!checked),
     [ checked ],
   );
 
   const handleClick = ()=>{
     setChecked(prevState=>!prevState);
+    onClickMemoised();
   };
 
   return(
@@ -38,7 +39,8 @@ const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tic
       </label>
       <input
         disabled={disabled}
-        type="checkbox" id={id}
+        type="checkbox"
+        id={id}
         onClick={handleClick}
         checked={checked}
       />
@@ -50,6 +52,9 @@ Checkbox.propTypes = {
   title: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   accentColor: PropTypes.string,
+  /**
+   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply 
+   */
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
   tickIcon: PropTypes.oneOf([ '✔', '🔪', '⚡', '❤', '🎁', '👍', '😁', '🎤' ]),
