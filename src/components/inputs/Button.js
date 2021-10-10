@@ -11,8 +11,8 @@ const Button = ({  primary, primaryColor,  secondaryColor, size, children, ...pr
     typeof primaryColor === 'string' && primaryColor
       ? { backgroundColor: primary ? primaryColor : secondaryColor }
       : {};
-  const textColorStyle = typeof secondaryColor ==='string' && secondaryColor ? { color: primary ? secondaryColor : primaryColor } : {};
-  const borderColorStyle = typeof primaryColor ==='string' && primaryColor ? { borderColor: primary ? 'transparent' : primaryColor } : {};
+  const textColorStyle = typeof secondaryColor === 'string' && secondaryColor ? { color: primary ? secondaryColor : primaryColor } : {};
+  const borderColorStyle = typeof primaryColor === 'string' && primaryColor ? { borderColor: primary ? 'transparent' : primaryColor } : {};
   const styleObject = { ...backgroundColorStyle, ...textColorStyle, ...borderColorStyle };
 
   return (

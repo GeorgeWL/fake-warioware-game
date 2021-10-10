@@ -15,8 +15,8 @@ const GameContainer = ()=> {
         isActive={isActive}
         onTimerComplete={()=>{
           setActive(false);
-          if(lives>0){
-            setLives(lives-1);
+          if(lives > 0){
+            setLives(lives - 1);
           }
         }}
         totalTime={10}
@@ -27,7 +27,7 @@ const GameContainer = ()=> {
       />
       <Button
         onClick={()=>{
-          lives>0&&setActive(true);
+          lives > 0 && setActive(true);
         }}
       >
         Start!

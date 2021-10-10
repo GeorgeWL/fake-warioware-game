@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import styles from './link.module.scss';
 
 const Link = ({ href, newTab, type, disabled, children, ...props }) => {
@@ -10,7 +10,7 @@ const Link = ({ href, newTab, type, disabled, children, ...props }) => {
   return (
     <a
       href={href}
-      className={classNames(styles.link, type && styles[`link--${type}`], disabled&&styles['link--disabled'])}
+      className={classNames(styles.link, type && styles[`link--${type}`], disabled && styles['link--disabled'])}
       {...newTabProps}
       {...props}
     >

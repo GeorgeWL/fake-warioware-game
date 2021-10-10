@@ -1,6 +1,6 @@
-import LifeIcon from './LifeIcon';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import LifeIcon from './LifeIcon';
 import styles from './livesContainer.module.scss';
 
 const LivesContainer = ({ count, isFlashing, isHardcore })=>(
@@ -17,7 +17,7 @@ const LivesContainer = ({ count, isFlashing, isHardcore })=>(
   </div>
 );
 
-LivesContainer.propTypes={
+LivesContainer.propTypes = {
   count: PropTypes.number.isRequired,
   isFlashing: PropTypes.bool,
   isHardcore: PropTypes.bool

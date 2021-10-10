@@ -5,7 +5,7 @@ import styles from './gameCanvas.module.scss';
 // TODO: Add Pixi
 const GameCanvas = ({ id, gameCompleted })=><canvas className={styles.container} onClick={gameCompleted} id={id}></canvas>;
 
-GameCanvas.propTypes ={
+GameCanvas.propTypes = {
   id: PropTypes.string.isRequired,
   gameCompleted: PropTypes.func
 };

@@ -1,10 +1,10 @@
-import styles from './lifeIcon.module.scss';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { ReactComponent as Heart } from '../../assets/heart.svg';
 import { ReactComponent as Star } from '../../assets/star.svg';
+import styles from './lifeIcon.module.scss';
 
-const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor='red', hardcoreBorderColor='gold', iconName='heart' }) => {
+const LifeIcon = ({ isHardCore, size = 'medium', backgroundColor = 'red', hardcoreBorderColor = 'gold', iconName = 'heart' }) => {
   const commonProps = {
     className: classNames(
       styles.icon,

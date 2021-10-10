@@ -5,9 +5,11 @@ import uuid from '../../uuid';
 import styles from './checkbox.module.scss';
 
 
-const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tickIcon }) => {
-  const id = uuid();
-  const [ checked, setChecked ]=useState(false);
+const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tickIcon, id }) => {
+  const [ checked, setChecked ] = useState(false);
+  if(id){
+    id = uuid();
+  }
 
   const handleClick = ()=>{
     onClick(checked);
@@ -18,7 +20,7 @@ const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tic
     <div
       className={classNames(
         styles.checkbox,
-        disabled&&styles['checkbox--disabled'],
+        disabled && styles['checkbox--disabled'],
         styles[`checkbox--${size}`]
       )}
     >
@@ -31,7 +33,7 @@ const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tic
           color: checked ? iconColor : 'transparent'
         }}
       >
-        {checked&&tickIcon}
+        {checked && tickIcon}
       </label>
       <input
         disabled={disabled}
@@ -49,7 +51,8 @@ Checkbox.propTypes = {
   accentColor: PropTypes.string,
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
-  tickIcon: PropTypes.oneOf([ '✔', '🔪', '⚡', '❤', '🎁', '👍', '😁', '🎤' ])
+  tickIcon: PropTypes.oneOf([ '✔', '🔪', '⚡', '❤', '🎁', '👍', '😁', '🎤' ]),
+  id: PropTypes.string
 };
 
 Checkbox.defaultProps = {

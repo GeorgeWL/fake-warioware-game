@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
 import styles from './timeDisplay.module.scss';
 
-const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', faceBorderColor='red', handColor='red', })=>{
+const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', faceBorderColor = 'red', handColor = 'red', })=>{
   const [ timeRemaining, setTimeRemaining ] = useState(totalTime);
   const clockRef = useRef();
   const totalTimePercentage = (timeRemaining / totalTime).toFixed(2);
@@ -14,8 +14,8 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', fa
     let interval;
     if(isActive){
       interval =  setInterval(()=>{
-        if(timeRemaining>0){
-          setTimeRemaining(timeRemaining-1);
+        if(timeRemaining > 0){
+          setTimeRemaining(timeRemaining - 1);
         } else {
           onTimerComplete();
           clearInterval(interval);
@@ -29,7 +29,7 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', fa
     return () => clearInterval(interval);
   }, [ isActive, timeRemaining ]);
 
-  if(clockRef&&clockRef.current){
+  if(clockRef && clockRef.current){
     clockRef?.current?.getElementById('hand')?.setAttribute('stroke', handColor );
     clockRef?.current?.getElementById('face')?.setAttribute('stroke', faceBorderColor);
   }
@@ -44,7 +44,7 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', fa
   );
 };
 
-TimeDisplay.propTypes={
+TimeDisplay.propTypes = {
   isActive: PropTypes.bool.isRequired,
   totalTime: PropTypes.number.isRequired,
   onTimerComplete: PropTypes.func.isRequired,
@@ -53,7 +53,7 @@ TimeDisplay.propTypes={
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
 };
 
-TimeDisplay.defaultProps ={
+TimeDisplay.defaultProps = {
   isActive: false,
   handColor: 'red',
   faceBorderColor: 'red'

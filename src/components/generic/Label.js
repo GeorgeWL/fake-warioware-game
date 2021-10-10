@@ -4,13 +4,13 @@ import styles from './label.module.scss';
 
 const Label = ({ children, primary })=>(
   <label
-    className={classNames(styles.label, primary&&styles['label--primary'])}
+    className={classNames(styles.label, primary && styles['label--primary'])}
   >
     {children}
   </label>
 );
 
-Label.propTypes={
+Label.propTypes = {
   children: PropTypes.node,
   primary: PropTypes.bool
 };
