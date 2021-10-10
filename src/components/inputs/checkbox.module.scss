@@ -1,8 +1,48 @@
 .checkbox {
-  padding: 10px;
+  display: block;
+  position: relative;
+  height: 5px;
+  width: 5px;
   input {
-    height: 10px;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: none;
   }
-  &--isPrimary {
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 100%;
+    bottom: 100%;
+    z-index: 1;
+    margin: 3.5px;
+    background: white;
+    border: 2px solid;
+    border-radius: 4px;
+  }
+  &--disabled {
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  &--small {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  &--medium {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  &--large {
+    font-size: 16px;
+    padding: 14px;
   }
 }
