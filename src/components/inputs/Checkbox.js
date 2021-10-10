@@ -55,6 +55,7 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   primary: true,
   accentColor: '#00c0ff',
+  iconColor: 'white',
   size: 'medium',
   disabled: false,
   tickIcon: '✔'
