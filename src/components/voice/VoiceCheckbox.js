@@ -16,16 +16,16 @@ VoiceCheckbox.propTypes = {
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   accentColor: PropTypes.string,
   /**
-   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply 
+   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply
    */
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
   /**
-   * If is empty string, checkbox will not work, if nully will use default
+   * If is empty string, checkbox will not work, if nully will use default of a generated unique ID
    */
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };
 
 VoiceCheckbox.defaultProps = {
