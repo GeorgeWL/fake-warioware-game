@@ -5,21 +5,48 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  primary, primaryColor,  secondaryColor, size, children, ...props }) => {
-
+const Button = ({
+  primary,
+  primaryColor,
+  secondaryColor,
+  size,
+  children,
+  className,
+  onClick,
+  ...props
+}) => {
   const backgroundColorStyle =
     typeof primaryColor === 'string' && primaryColor
       ? { backgroundColor: primary ? primaryColor : secondaryColor }
       : {};
-  const textColorStyle = typeof secondaryColor === 'string' && secondaryColor ? { color: primary ? secondaryColor : primaryColor } : {};
-  const borderColorStyle = typeof primaryColor === 'string' && primaryColor ? { borderColor: primary ? 'transparent' : primaryColor } : {};
-  const styleObject = { ...backgroundColorStyle, ...textColorStyle, ...borderColorStyle };
+
+  const textColorStyle =
+    typeof secondaryColor === 'string' && secondaryColor
+      ? { color: primary ? secondaryColor : primaryColor }
+      : {};
+
+  const borderColorStyle =
+    typeof primaryColor === 'string' && primaryColor
+      ? { borderColor: primary ? 'transparent' : primaryColor }
+      : {};
+
+  const styleObject = {
+    ...backgroundColorStyle,
+    ...textColorStyle,
+    ...borderColorStyle,
+  };
 
   return (
     <button
-      type='button'
-      className={classNames(styles.button, styles[`button--${size}`], styles[`button--${primary ? 'primary' : 'secondary' }`] )}
+      type="button"
+      className={classNames(
+        styles.button,
+        styles[`button--${size}`],
+        styles[`button--${primary ? 'primary' : 'secondary'}`],
+        className
+      )}
       style={styleObject}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -52,7 +79,11 @@ Button.propTypes = {
    * Optional click handler
    */
   onClick: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  /**
+   * optional additional classname
+   */
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {

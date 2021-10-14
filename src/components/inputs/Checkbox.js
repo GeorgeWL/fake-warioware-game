@@ -1,29 +1,38 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import uuid from '../../uuid';
 import styles from './checkbox.module.scss';
 
-
-const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tickIcon, id }) => {
+const Checkbox = ({
+  onChange,
+  size,
+  disabled,
+  title,
+  accentColor,
+  iconColor,
+  tickIcon,
+  id,
+  className,
+}) => {
   const [ checked, setChecked ] = useState(false);
 
-  const onClickMemoised = useCallback(
-    () => onClick(!checked),
-    [ checked ],
-  );
+  useEffect(() => {
+    onChange(checked);
+  }, [ checked ]);
 
-  const handleClick = ()=>{
-    setChecked(prevState=>!prevState);
-    onClickMemoised();
+  const handleChange = () => {
+    setChecked((prevState) => !prevState);
   };
 
-  return(
+  return (
     <div
       className={classNames(
         styles.checkbox,
         disabled && styles['checkbox--disabled'],
-        styles[`checkbox--${size}`]
+        styles[`checkbox--${size}`],
+        className
       )}
     >
       <label
@@ -32,7 +41,7 @@ const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tic
         style={{
           backgroundColor: checked ? accentColor : 'white',
           borderColor: accentColor,
-          color: checked ? iconColor : 'transparent'
+          color: checked ? iconColor : 'transparent',
         }}
       >
         {checked && tickIcon}
@@ -41,24 +50,29 @@ const Checkbox = ({ onClick,  size, disabled, title, accentColor, iconColor, tic
         disabled={disabled}
         type="checkbox"
         id={id}
-        onClick={handleClick}
+        onChange={handleChange}
         checked={checked}
       />
     </div>
-  );};
+  );
+};
 
 Checkbox.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   title: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   accentColor: PropTypes.string,
   /**
-   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply 
+   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply
    */
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
   tickIcon: PropTypes.oneOf([ '✔', '🔪', '⚡', '❤', '🎁', '👍', '😁', '🎤' ]),
-  id: PropTypes.string
+  id: PropTypes.string,
+  /**
+   * optional additional classname
+   */
+  className: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
@@ -67,7 +81,7 @@ Checkbox.defaultProps = {
   size: 'medium',
   disabled: false,
   tickIcon: '✔',
-  id: uuid()
+  id: uuid(),
 };
 
 export default Checkbox;
