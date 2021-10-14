@@ -9,8 +9,12 @@ export const mediaSlice = createSlice({
   name: 'media',
   initialState,
   reducers: {
-    setVoiceEnabled: (state, action) => (state.voiceEnabled = action.payload),
-    setCameraEnabled: (state, action) => (state.cameraEnabled = action.payload),
+    setVoiceEnabled: (state, action) => {
+      state.voiceEnabled = action.payload;
+    },
+    setCameraEnabled: (state, action) => {
+      state.cameraEnabled = action.payload;
+    },
   },
 });
 export const { setVoiceEnabled, setCameraEnabled } = mediaSlice.actions;
