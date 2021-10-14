@@ -19,7 +19,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': ['warn', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'padding-line-between-statements': [
@@ -35,7 +35,7 @@ module.exports = {
     'key-spacing': ['error', { afterColon: true }],
     'comma-spacing': ['error', { before: false, after: true }],
     'object-curly-spacing': ['error', 'always'],
-    'array-bracket-spacing': ['error', 'always'],
+    'array-bracket-spacing': ['warn', 'always'],
     'no-trailing-spaces': ['error', { ignoreComments: true }],
     'react/jsx-max-props-per-line': ['error', { when: 'multiline' }],
     'arrow-body-style': ['error', 'as-needed'],
