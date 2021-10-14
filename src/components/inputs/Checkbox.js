@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import uuid from '../../uuid';
 import styles from './checkbox.module.scss';
 
 const Checkbox = ({
+  value: checked,
   onChange,
   size,
   disabled,
@@ -16,15 +15,7 @@ const Checkbox = ({
   id,
   className,
 }) => {
-  const [ checked, setChecked ] = useState(false);
-
-  useEffect(() => {
-    onChange(checked);
-  }, [ checked ]);
-
-  const handleChange = () => {
-    setChecked((prevState) => !prevState);
-  };
+  const handleChange = () => onChange(!checked);
 
   return (
     <div
@@ -59,6 +50,7 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.bool.isRequired,
   title: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   accentColor: PropTypes.string,
