@@ -20,9 +20,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint-fix":"./node_modules/.bin/eslint ./src --fix",
+    "lint-fix": "./node_modules/.bin/eslint ./src --fix",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +62,7 @@
     "@storybook/react": "^6.3.9",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.1",
-    "sass": "^1.42.1"
+    "sass": "^1.42.1",
+    "husky": "^7.0.0"
   }
 }
