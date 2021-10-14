@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import styles from './button.module.scss';
 
 /**
@@ -15,26 +17,18 @@ const Button = ({
   onClick,
   ...props
 }) => {
-  const backgroundColorStyle =
-    typeof primaryColor === 'string' && primaryColor
-      ? { backgroundColor: primary ? primaryColor : secondaryColor }
-      : {};
+  const ref = useRef();
+  const backgroundColor = primary ? primaryColor : secondaryColor;
+  const color = primary ? secondaryColor : primaryColor;
+  const borderColor = primary ? 'transparent' : primaryColor;
 
-  const textColorStyle =
-    typeof secondaryColor === 'string' && secondaryColor
-      ? { color: primary ? secondaryColor : primaryColor }
-      : {};
-
-  const borderColorStyle =
-    typeof primaryColor === 'string' && primaryColor
-      ? { borderColor: primary ? 'transparent' : primaryColor }
-      : {};
-
-  const styleObject = {
-    ...backgroundColorStyle,
-    ...textColorStyle,
-    ...borderColorStyle,
-  };
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.setProperty('--background', backgroundColor);
+      ref.current.style.setProperty('--color', color);
+      ref.current.style.setProperty('--border', borderColor);
+    }
+  }, [ borderColor, color, backgroundColor, primary ]);
 
   return (
     <button
@@ -45,7 +39,7 @@ const Button = ({
         styles[`button--${primary ? 'primary' : 'secondary'}`],
         className
       )}
-      style={styleObject}
+      ref={ref}
       onClick={onClick}
       {...props}
     >
@@ -92,7 +86,7 @@ Button.defaultProps = {
   primary: false,
   size: 'medium',
   onClick: undefined,
-  disabled: false
+  disabled: false,
 };
 
 export default Button;
