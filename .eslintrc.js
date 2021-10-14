@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -40,5 +41,10 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'multiline-ternary': ['error', 'always-multiline'],
     'space-infix-ops': 'error',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
