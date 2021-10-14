@@ -1,0 +1,17 @@
+import Label from '../components/generic/Label';
+
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+export default {
+  title: 'Generic/Label',
+  component: Label,
+  args: {
+    children: 'Label Text',
+    size: 'medium',
+  },
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+};
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template = (args) => <Label {...args} />;
+
+export const Default = Template.bind({});
