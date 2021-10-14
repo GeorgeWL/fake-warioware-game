@@ -21,8 +21,12 @@ const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
     dispatch(setVoiceEnabled(voiceStreamEnabled));
   }, [ voiceStreamEnabled ]);
 
-  const disableStream = () => {
+  const disableStream = (error) => {
     setVoiceStreamEnabled(false);
+    if (error) {
+      setVoiceSwitchDisabled(true);
+      console.error(error);
+    }
     if (window.stream) {
       window.stream.getAudioTracks().forEach((track) => track.stop());
       window.stream = null;
@@ -30,21 +34,19 @@ const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
   };
 
   const handleChange = (enabled) => {
-    if (!window.stream) {
+    if (enabled) {
       navigator.mediaDevices
         .getUserMedia({
           audio: enabled,
         })
         .then((stream) => {
           window.stream = stream;
-          setVoiceStreamEnabled(true);
+          setVoiceStreamEnabled(enabled);
         })
         .catch((err) => {
-          console.error(err);
-          disableStream();
-          setVoiceSwitchDisabled(true);
+          disableStream(err); //;
         });
-    } else if (!enabled) {
+    } else {
       disableStream();
     }
   };
