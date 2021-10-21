@@ -1,6 +1,13 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Minigames app
+
+This application will contain a game screen with a timer and life tracking, the goal of the game is to complete as many mini-games as possible witin the time limit, before your lives run out.
+
+- You lose a life if you don't complete a game succesfully.
+- You will gain a life once every 10 succesful games
+- the game continues until you run out of lives, at which point a "Share my score" screen will display
+- **Possible future feature** add a game replay, which replays a screen recording of the gameplay
 
 ## Available Scripts
 
