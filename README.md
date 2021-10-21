@@ -3,7 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Minigames app
 
 [storybook](https://storybook-minigames.georgewl.dev/) 
-[application
+[application](https://minigames.georgewl.dev/)
+
 This application will contain a game screen with a timer and life tracking, the goal of the game is to complete as many mini-games as possible witin the time limit, before your lives run out.
 
 ### Current features
