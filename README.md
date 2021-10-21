@@ -2,13 +2,36 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Minigames app
 
+[storybook](https://storybook-minigames.georgewl.dev/) 
+[application
 This application will contain a game screen with a timer and life tracking, the goal of the game is to complete as many mini-games as possible witin the time limit, before your lives run out.
 
-- You lose a life if you don't complete a game succesfully.
-- The games are intentionally simple and short, e.g. "Press the button" or "Shoot the arrow"
-- You will gain a life once every 10 succesful games
-- the game continues until you run out of lives, at which point a "Share my score" screen will display
-- **Possible future feature** add a game replay, which replays a screen recording of the gameplay
+### Current features
+
+- [ ] You lose a life if you don't complete a game succesfully.
+- [ ] You will gain a life once every 10 succesful games
+- [ ] the game continues until you run out of lives, at which point a "Share my score" screen will display
+- [ ] minigames which use mouse-only
+- [ ] minigames which use keyboard-only
+- [ ] minigames which use keyboard and mouse
+
+### Possible future features
+
+- [ ] minigames which use microphone
+- [ ] minigames which use camera
+- [ ] Game replay, which replays a screen recording of the gameplay
+
+## Development Process
+
+### pre-release
+until version 1.0.0 all development pushed directly onto `main` branch 
+
+### post-release
+1. all new dev must be in a new branch
+2. tested (manually and automated) 
+4. netlify will automatically build the branch to a temporary hosted URL, check the hosted version has no issues
+5. merge into `main` if certain no issues
+6. netlify will automatically build onto the project URL
 
 ## Available Scripts
 
