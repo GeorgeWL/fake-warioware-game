@@ -1,9 +1,26 @@
 {
   "extends": "stylelint-config-sass-guidelines",
-  "plugins": ["stylelint-order"],
+  "plugins": [
+    "stylelint-order"
+  ],
   "rules": {
-    "max-nesting-depth": [1, { "ignore": ["pseudo-classes"] }],
-    "order/order": ["custom-properties", "declarations"],
-    "order/properties-order": ["width", "height"]
+    "selector-class-pattern": null,
+    "max-nesting-depth": [
+      2,
+      {
+        "ignore": [
+          "pseudo-classes",
+          "blockless-at-rules"
+        ]
+      }
+    ],
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": [
+      "width",
+      "height"
+    ]
   }
 }
