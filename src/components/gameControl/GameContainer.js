@@ -6,31 +6,45 @@ import TimeDisplay from '../timeTracking/TimeDisplay';
 import styles from './gameContainer.module.scss';
 import GameWrapper from './GameWrapper';
 
-const GameContainer = ({ children })=> {
+const GameContainer = ({ children, gameDuration = 60 })=> {
   const [ isActive, setActive ] = useState(false);
   const [ lives, setLives ] = useState(3);
+  const [ isLivesFlashing, setLivesFlashing ] = useState(false);
 
   return (
     <div className={styles.container}>
-      <TimeDisplay
-        isActive={isActive}
-        onTimerComplete={()=>{
-          setActive(false);
-          if(lives > 0){
-            setLives(lives - 1);
-          }
-        }}
-        totalTime={10}
-      />
+      <div className={styles.header}>
+        <TimeDisplay
+          isActive={isActive}
+          onTimerComplete={()=>{
+            setActive(false);
+            if(lives > 0){
+              setLives(lives - 1);
+            }
+            setLivesFlashing(false);
+          }}
+          onTimerAlmostComplete={()=>setLivesFlashing(true)}
+          totalTime={gameDuration}
+          size='small'
+        />
+        <LivesContainer
+          count={lives}
+          size='small'
+          isFlashing={isLivesFlashing}
+        />
+      </div>
       <GameWrapper>
         {children}
       </GameWrapper>
-      <LivesContainer
-        count={lives}
-      />
       <Button
         onClick={()=>{
-          lives > 0 && setActive(true);
+          if(lives > 0){
+            setActive(true);
+          }
+          else{
+            setLives(3);
+            setActive(false);
+          }
         }}
       >
         Start!
@@ -40,7 +54,8 @@ const GameContainer = ({ children })=> {
 };
 
 GameContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  gameDuration: PropTypes.number.isRequired
 };
 
 export default GameContainer;
