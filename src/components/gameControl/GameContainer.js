@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Button from '../inputs/Button';
 import LivesContainer from '../lifeTracking/LivesContainer';
 import TimeDisplay from '../timeTracking/TimeDisplay';
-import GameCanvas from './GameCanvas';
 import styles from './gameContainer.module.scss';
+import GameWrapper from './GameWrapper';
 
-const GameContainer = ()=> {
+const GameContainer = ({ children })=> {
   const [ isActive, setActive ] = useState(false);
   const [ lives, setLives ] = useState(3);
 
@@ -21,7 +22,9 @@ const GameContainer = ()=> {
         }}
         totalTime={10}
       />
-      <GameCanvas/>
+      <GameWrapper>
+        {children}
+      </GameWrapper>
       <LivesContainer
         count={lives}
       />
@@ -34,6 +37,10 @@ const GameContainer = ()=> {
       </Button>
     </div>
   );
+};
+
+GameContainer.propTypes = {
+  children: PropTypes.node
 };
 
 export default GameContainer;
