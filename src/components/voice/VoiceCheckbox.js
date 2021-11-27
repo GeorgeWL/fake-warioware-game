@@ -1,28 +1,23 @@
 import 'md-gum-polyfill';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setVoiceEnabled } from '../../app/mediaSlice';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectVoiceEnabled, setVoiceEnabled, setVoiceStream } from '../../app/mediaSlice';
 import uuid from '../../uuid';
 import Label from '../generic/Label';
 import Checkbox from '../inputs/Checkbox';
 import styles from './voiceCheckbox.module.scss';
 
 /**
- * @description standalone control for enable/disabled microphone
- * @param {*} props
+ * @description standalone control for enable/disable microphone
  */
 const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
   const dispatch = useDispatch();
-  const [ voiceStreamEnabled, setVoiceStreamEnabled ] = useState(false);
+  const voiceEnabled = useSelector(selectVoiceEnabled);
   const [ voiceSwitchDisabled, setVoiceSwitchDisabled ] = useState(false);
 
-  useEffect(() => {
-    dispatch(setVoiceEnabled(voiceStreamEnabled));
-  }, [ voiceStreamEnabled ]);
-
   const disableStream = (error) => {
-    setVoiceStreamEnabled(false);
+    dispatch(setVoiceEnabled(false));
     if (error) {
       setVoiceSwitchDisabled(true);
       console.error(error);
@@ -30,6 +25,7 @@ const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
     if (window.stream) {
       window.stream.getAudioTracks().forEach((track) => track.stop());
       window.stream = null;
+      dispatch(setVoiceStream(null));
     }
   };
 
@@ -41,10 +37,11 @@ const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
         })
         .then((stream) => {
           window.stream = stream;
-          setVoiceStreamEnabled(enabled);
+          dispatch(setVoiceStream(window.stream));
+          dispatch(setVoiceEnabled(true));
         })
         .catch((err) => {
-          disableStream(err); //;
+          disableStream(err);
         });
     } else {
       disableStream();
@@ -58,7 +55,7 @@ const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
       </Label>
       <Checkbox
         size="small"
-        value={voiceStreamEnabled}
+        value={voiceEnabled}
         onChange={(value) => handleChange(value)}
         id={id}
         accentColor={accentColor}
