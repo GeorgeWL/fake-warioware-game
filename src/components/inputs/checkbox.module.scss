@@ -1,5 +1,7 @@
 .checkbox {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   height: 5px;
   width: 5px;
@@ -18,10 +20,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    top: 0;
-    left: 0;
-    right: 100%;
-    bottom: 100%;
     z-index: 1;
     margin: 3.5px;
     background: white;

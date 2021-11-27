@@ -1,25 +1,46 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import styles from './button.module.scss';
 
 /**
  * Primary UI component for user interaction
  */
-const Button = ({  primary, primaryColor,  secondaryColor, size, children, ...props }) => {
+const Button = ({
+  primary,
+  primaryColor,
+  secondaryColor,
+  size,
+  children,
+  className,
+  onClick,
+  ...props
+}) => {
+  const ref = useRef();
+  const backgroundColor = primary ? primaryColor : secondaryColor;
+  const color = primary ? secondaryColor : primaryColor;
+  const borderColor = primary ? 'transparent' : primaryColor;
 
-  const backgroundColorStyle =
-    typeof primaryColor === 'string' && primaryColor
-      ? { backgroundColor: primary ? primaryColor : secondaryColor }
-      : {};
-  const textColorStyle = typeof secondaryColor === 'string' && secondaryColor ? { color: primary ? secondaryColor : primaryColor } : {};
-  const borderColorStyle = typeof primaryColor === 'string' && primaryColor ? { borderColor: primary ? 'transparent' : primaryColor } : {};
-  const styleObject = { ...backgroundColorStyle, ...textColorStyle, ...borderColorStyle };
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.setProperty('--background', backgroundColor);
+      ref.current.style.setProperty('--color', color);
+      ref.current.style.setProperty('--border', borderColor);
+    }
+  }, [ borderColor, color, backgroundColor, primary ]);
 
   return (
     <button
-      type='button'
-      className={classNames(styles.button, styles[`button--${size}`], styles[`button--${primary ? 'primary' : 'secondary' }`] )}
-      style={styleObject}
+      type="button"
+      className={classNames(
+        styles.button,
+        styles[`button--${size}`],
+        styles[`button--${primary ? 'primary' : 'secondary'}`],
+        className
+      )}
+      ref={ref}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -52,7 +73,11 @@ Button.propTypes = {
    * Optional click handler
    */
   onClick: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  /**
+   * optional additional classname
+   */
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -61,7 +86,7 @@ Button.defaultProps = {
   primary: false,
   size: 'medium',
   onClick: undefined,
-  disabled: false
+  disabled: false,
 };
 
 export default Button;

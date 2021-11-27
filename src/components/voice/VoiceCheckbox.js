@@ -1,35 +1,91 @@
+import 'md-gum-polyfill';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setVoiceEnabled } from '../../app/mediaSlice';
 import uuid from '../../uuid';
 import Label from '../generic/Label';
 import Checkbox from '../inputs/Checkbox';
+import styles from './voiceCheckbox.module.scss';
 
-// TODO: Should it be functional, or purely UI?
-const VoiceCheckbox = ({ children, onClick, id, size, accentColor, iconColor, disabled })=>(
-  <div>
-    <Label size={size} htmlFor={id}>{children}</Label>
-    <Checkbox size={size} onClick={(value)=>onClick(value)} tickIcon='🎤' id={id} accentColor={accentColor} iconColor={iconColor} disabled={disabled}/>
-  </div>
-);
+/**
+ * @description standalone control for enable/disabled microphone
+ * @param {*} props
+ */
+const VoiceCheckbox = ({ children, id, accentColor, iconColor }) => {
+  const dispatch = useDispatch();
+  const [ voiceStreamEnabled, setVoiceStreamEnabled ] = useState(false);
+  const [ voiceSwitchDisabled, setVoiceSwitchDisabled ] = useState(false);
+
+  useEffect(() => {
+    dispatch(setVoiceEnabled(voiceStreamEnabled));
+  }, [ voiceStreamEnabled ]);
+
+  const disableStream = (error) => {
+    setVoiceStreamEnabled(false);
+    if (error) {
+      setVoiceSwitchDisabled(true);
+      console.error(error);
+    }
+    if (window.stream) {
+      window.stream.getAudioTracks().forEach((track) => track.stop());
+      window.stream = null;
+    }
+  };
+
+  const handleChange = (enabled) => {
+    if (enabled) {
+      navigator.mediaDevices
+        .getUserMedia({
+          audio: enabled,
+        })
+        .then((stream) => {
+          window.stream = stream;
+          setVoiceStreamEnabled(enabled);
+        })
+        .catch((err) => {
+          disableStream(err); //;
+        });
+    } else {
+      disableStream();
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <Label htmlFor={id} className={styles.label}>
+        {children}
+      </Label>
+      <Checkbox
+        size="small"
+        value={voiceStreamEnabled}
+        onChange={(value) => handleChange(value)}
+        id={id}
+        accentColor={accentColor}
+        iconColor={iconColor}
+        disabled={voiceSwitchDisabled}
+      />
+    </div>
+  );
+};
 
 VoiceCheckbox.propTypes = {
   title: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
   accentColor: PropTypes.string,
   /**
-   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply 
+   *  only applies for utf8 emojis, for 2-byte (coloured) emojis does not apply
    */
   iconColor: PropTypes.string,
-  disabled: PropTypes.bool,
   children: PropTypes.node,
-  onClick: PropTypes.func.isRequired,
   /**
-   * If is empty string, checkbox will not work, if nully will use default
+   * If is empty string, checkbox will not work, if nully will use default of a generated unique ID
    */
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };
 
 VoiceCheckbox.defaultProps = {
-  id: uuid()
+  id: uuid(),
 };
 
 export default VoiceCheckbox;

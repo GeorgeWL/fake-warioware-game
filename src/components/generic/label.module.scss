@@ -1,3 +1,26 @@
 .label {
   color: #0e0e0e;
+  padding: 0.1rem;
+
+  &--small {
+    font-size: 0.8rem;
+  }
+
+  &--medium {
+    font-size: 1rem;
+  }
+
+  &--large {
+    font-size: 1.2rem;
+  }
+
+  &[for] {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  &[for=''] {
+    cursor: inherit;
+    font-weight: inherit;
+  }
 }

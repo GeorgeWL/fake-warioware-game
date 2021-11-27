@@ -1,0 +1,6 @@
+{
+    "files.eol": "\n",
+    "typescript.preferences.quoteStyle": "single",
+    "javascript.preferences.quoteStyle": "single",
+    "prettier.singleQuote": true
+}

@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "classnames": "^2.3.1",
+    "md-gum-polyfill": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
@@ -18,8 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint-fix": "./node_modules/.bin/eslint ./src --fix",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +63,16 @@
     "@storybook/react": "^6.3.9",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.1",
-    "sass": "^1.42.1"
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.3",
+    "sass": "^1.42.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "**/*.scss": "stylelint --fix"
   }
 }
