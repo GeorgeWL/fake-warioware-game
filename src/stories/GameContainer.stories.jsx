@@ -13,14 +13,13 @@ export default {
       </Provider>
     ),
   ],
+  args: {
+    children: <canvas/>,
+    gameDuration: 60
+  }
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <GameContainer {...args} />;
 
 export const Default = Template.bind({});
-
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  totalTime: 10,
-};

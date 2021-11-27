@@ -23,7 +23,15 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
             }
             setLivesFlashing(false);
           }}
-          onTimerAlmostComplete={()=>setLivesFlashing(true)}
+          onTimerTick={(percentage)=>{
+            if(percentage === .33){
+              setLivesFlashing(true);
+            }
+            if(percentage === .03){
+              setLivesFlashing(false);
+            }
+          }
+          }
           totalTime={gameDuration}
           size='small'
         />

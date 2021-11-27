@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactComponent as Clock } from '../../assets/clock.svg';
 import styles from './timeDisplay.module.scss';
 
-const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', faceBorderColor = 'red', handColor = 'red', })=>{
+const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', faceBorderColor = 'red', handColor = 'red', onTimerTick })=>{
   const [ timeRemaining, setTimeRemaining ] = useState(totalTime);
   const clockRef = useRef();
-  const totalTimePercentage = (timeRemaining / totalTime).toFixed(2);
+  const totalTimePercentage = parseFloat((timeRemaining / totalTime).toFixed(2));
   const clockDegrees = (360 * totalTimePercentage);
 
   useEffect(()=>{
@@ -20,6 +20,7 @@ const TimeDisplay = ({ isActive, totalTime, onTimerComplete, size = 'medium', fa
           onTimerComplete();
           clearInterval(interval);
         }
+        onTimerTick(totalTimePercentage);
         clockRef.current.getElementById('hand').setAttribute('transform', `rotate(${clockDegrees} 50 50)`);
       }, 100);
     }else{
@@ -48,6 +49,7 @@ TimeDisplay.propTypes = {
   isActive: PropTypes.bool.isRequired,
   totalTime: PropTypes.number.isRequired,
   onTimerComplete: PropTypes.func.isRequired,
+  onTimerTick: PropTypes.func.isRequired,
   faceBorderColor: PropTypes.string,
   handColor: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
