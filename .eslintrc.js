@@ -31,13 +31,13 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'multiline-expression' },
     ],
     'key-spacing': [ 'error', { afterColon: true } ],
-    'comma-spacing': [ 'error', { 'before': false, 'after': true } ],
+    'comma-spacing': [ 'error', { before: false, after: true } ],
     'object-curly-spacing': [ 'error', 'always' ],
     'array-bracket-spacing': [ 'error', 'always' ],
-    'no-trailing-spaces': [ 'error', { 'ignoreComments': true } ],
+    'no-trailing-spaces': [ 'error', { ignoreComments: true } ],
     'react/jsx-max-props-per-line': [ 'error', { when: 'multiline' } ],
     'arrow-body-style': [ 'error', 'as-needed' ],
     'multiline-ternary': [ 'error', 'always-multiline' ],
-    'space-infix-ops': 'error'
+    'space-infix-ops': 'error',
   },
 };
