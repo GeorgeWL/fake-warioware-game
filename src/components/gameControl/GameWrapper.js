@@ -8,7 +8,7 @@ const GameWrapper = ({ onGameStateChange, children }) => (
 
 GameWrapper.propTypes = {
   onGameStateChange: PropTypes.func,
-  children: PropTypes.instanceOf(HTMLCanvasElement)
+  children: PropTypes.node
 };
 
 export default GameWrapper;
