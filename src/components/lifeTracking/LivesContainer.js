@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import LifeIcon from './LifeIcon';
 import styles from './livesContainer.module.scss';
 
-const LivesContainer = ({ count, isFlashing, isHardcore })=>(
+const LivesContainer = ({ count, isFlashing, ...rest })=>(
   <div
     className={classNames(styles.container, isFlashing && styles.isFlashing)}
   >
-    {Array.from(Array(count))
-      .map(index => (
+    {count >= 0 && Array.from(Array(count))
+      .map((index, item) => (
         <LifeIcon
-          key={`life-${index}`}
-          isHardCore={isHardcore}
+          key={`life-${index}-${item}`}
+          {...rest}
         />
       ))}
   </div>
@@ -20,7 +20,7 @@ const LivesContainer = ({ count, isFlashing, isHardcore })=>(
 LivesContainer.propTypes = {
   count: PropTypes.number.isRequired,
   isFlashing: PropTypes.bool,
-  isHardcore: PropTypes.bool
+  ...LifeIcon.propTypes
 };
 
 export default LivesContainer;

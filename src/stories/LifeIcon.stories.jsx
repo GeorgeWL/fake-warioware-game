@@ -6,7 +6,9 @@ export default {
   component: LifeIcon,
   args: {
     iconName: 'heart',
-    size: 'medium'
+    size: 'medium',
+    backgroundColor: '#fe1943',
+    hardcoreBorderColor: 'gold',
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
@@ -19,11 +21,6 @@ export default {
 const Template = (args) => <LifeIcon {...args} />;
 
 export const Primary = Template.bind({});
-
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  backgroundColor: '#fe1943',
-};
 
 export const Small = Template.bind({});
 
