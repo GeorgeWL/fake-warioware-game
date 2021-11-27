@@ -15,7 +15,7 @@ const LifeIcon = ({
     className: classNames(styles.icon, styles[`icon--${size}`]),
     style: {
       fill: backgroundColor,
-      filter: isHardCore && `drop-shadow(1px 2px 5px ${hardcoreBorderColor})`,
+      filter: isHardCore && `drop-shadow(.5px 1px 2px ${hardcoreBorderColor})`,
     },
   };
   switch (iconName) {
