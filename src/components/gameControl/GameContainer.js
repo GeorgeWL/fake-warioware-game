@@ -10,6 +10,7 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
   const [ isActive, setActive ] = useState(false);
   const [ lives, setLives ] = useState(3);
   const [ isLivesFlashing, setLivesFlashing ] = useState(false);
+  const [ timePercentage, setTimePercent ] = useState(1.0);
 
   return (
     <div className={styles.container}>
@@ -24,10 +25,11 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
             setLivesFlashing(false);
           }}
           onTimerTick={(percentage)=>{
-            if(percentage === .33){
+            setTimePercent(percentage);
+            if(timePercentage === .5){
               setLivesFlashing(true);
             }
-            if(percentage === .03){
+            if(timePercentage === .1){
               setLivesFlashing(false);
             }
           }
@@ -39,6 +41,7 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
           count={lives}
           size='small'
           isFlashing={isLivesFlashing}
+          isFading={timePercentage === .08}
         />
       </div>
       <GameWrapper>
