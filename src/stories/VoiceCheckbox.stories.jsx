@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import VoiceCheckbox from '../components/voice/VoiceCheckbox';
+import { IconNameTypes } from '../constants/IconNameTypes';
 
 export default {
   title: 'Voice/VoiceCheckbox',
@@ -11,6 +12,15 @@ export default {
     iconColor: 'white',
     children: 'Enable Voice',
     disabled: false,
+    iconName: '✔'
+  },
+  argTypes: {
+    iconName: {
+      control: {
+        type: 'select',
+        options: Object.values(IconNameTypes)
+      }
+    }
   },
   decorators: [
     (Story) => (

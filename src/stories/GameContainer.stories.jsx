@@ -4,7 +4,7 @@ import GameContainer from '../components/gameControl/GameContainer';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Game/GameContainer',
+  title: 'GameContainer',
   component: GameContainer,
   decorators: [
     (Story) => (
