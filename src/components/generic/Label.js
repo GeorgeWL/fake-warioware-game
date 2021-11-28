@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './label.module.scss';
 
-const Label = ({ children, size, className, htmlFor, ...props }) => (
+const Label = ({ children, size, className, id, ...props }) => (
   <label
     className={classNames(className, styles.label, styles[`label--${size}`])}
+    htmlFor={id}
     {...props}
-    htmlFor={htmlFor}
   >
     {children}
   </label>
@@ -20,9 +20,9 @@ Label.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * if htmlFor and string has length, styles differently to show label is a control
+   * if id and string has length, styles differently to show label is a control
    */
-  htmlFor: PropTypes.string,
+  id: PropTypes.string,
 };
 
 Label.defaultProps = {

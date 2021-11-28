@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
 import Label from '../generic/Label';
 import Checkbox from './Checkbox';
+import styles from './labelCheckbox.module.scss';
 
-const LabelInput = ({ children, onChange, checked, id }) => (
-  <div>
-    <Label id={id}>{children}</Label>
-    <Checkbox value={checked} onChange={onChange} id={id}/>
+const LabelCheckbox = ({ children, onChange, checked, id,  ...rest }) => (
+  <div className={styles.container}>
+    <Label id={id} {...rest} className={styles.label}>{children}</Label>
+    <Checkbox value={checked} onChange={onChange} id={id} {...rest}/>
   </div>
 );
 
-LabelInput.defaultProps = {
+LabelCheckbox.defaultProps = {
   ...Checkbox.defaultProps,
   ...Label.defaultProps
 };
 
-LabelInput.propTypes = {
+LabelCheckbox.propTypes = {
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
@@ -23,4 +24,4 @@ LabelInput.propTypes = {
   ...Checkbox.propTypes
 };
 
-export default LabelInput;
+export default LabelCheckbox;

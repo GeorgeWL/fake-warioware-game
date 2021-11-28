@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { IconNameTypes } from '../../constants/IconNameTypes';
 import uuid from '../../uuid';
 import styles from './checkbox.module.scss';
 
@@ -11,7 +12,7 @@ const Checkbox = ({
   title,
   accentColor,
   iconColor,
-  tickIcon,
+  iconName,
   id,
   className,
 }) => {
@@ -35,7 +36,7 @@ const Checkbox = ({
           color: checked ? iconColor : 'transparent',
         }}
       >
-        {checked && tickIcon}
+        {checked && iconName}
       </label>
       <input
         disabled={disabled}
@@ -59,7 +60,7 @@ Checkbox.propTypes = {
    */
   iconColor: PropTypes.string,
   disabled: PropTypes.bool,
-  tickIcon: PropTypes.oneOf([ '✔', '🔪', '⚡', '❤', '🎁', '👍', '😁', '🎤' ]),
+  iconName: PropTypes.oneOf(Object.values(IconNameTypes)),
   id: PropTypes.string,
   /**
    * optional additional classname
@@ -72,7 +73,7 @@ Checkbox.defaultProps = {
   iconColor: 'white',
   size: 'medium',
   disabled: false,
-  tickIcon: '✔',
+  iconName: '✔',
   id: uuid(),
 };
 
