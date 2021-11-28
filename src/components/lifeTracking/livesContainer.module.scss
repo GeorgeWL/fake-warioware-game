@@ -4,8 +4,12 @@
   flex-direction: row;
   justify-content: center;
 
+  * {
+    margin: 0 0.2em;
+  }
+
   &.isFlashing {
-    svg {
+    * {
       animation: heartBeat 1s infinite ease-in-out;
       @for $i from 1 through 100 {
         &:nth-child(#{$i}n) {

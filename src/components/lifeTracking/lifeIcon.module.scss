@@ -1,14 +1,25 @@
 .icon {
-  height: 100px;
-  width: 100px;
-  transition: filter 0.8s ease-in-out, height 0.8s linear;
+  font-size: 3em;
+  transition: filter 0.8s ease-in-out, font-size 0.8s linear;
 
   &--small {
-    height: 50px;
-    width: 50px;
+    font-size: 2em;
   }
+
   &--large {
-    height: 200px;
-    width: 200px;
+    font-size: 4em;
+  }
+
+  &.isFading {
+    animation: fadeout 0.8s ease forwards;
+  }
+}
+@keyframes fadeout {
+  50% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
   }
 }

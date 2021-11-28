@@ -1,38 +1,34 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { ReactComponent as Heart } from '../../assets/heart.svg';
-import { ReactComponent as Star } from '../../assets/star.svg';
+import { IconNameTypes } from '../../constants/IconNameTypes';
 import styles from './lifeIcon.module.scss';
 
 const LifeIcon = ({
   isHardCore,
+  isFading,
   size = 'medium',
   backgroundColor = 'red',
   hardcoreBorderColor = 'gold',
-  iconName = 'heart',
+  iconName = IconNameTypes.HEART,
 }) => {
   const commonProps = {
-    className: classNames(styles.icon, styles[`icon--${size}`]),
+    className: classNames(styles.icon, styles[`icon--${size}`], { [styles.isFading]: isFading }),
     style: {
-      fill: backgroundColor,
+      color: backgroundColor,
       filter: isHardCore && `drop-shadow(.5px 1px 2px ${hardcoreBorderColor})`,
     },
   };
-  switch (iconName) {
-    // could use just if, but future-proofing for later
-    case 'star':
-      return <Star {...commonProps} />;
-    default:
-      return <Heart {...commonProps} />;
-  }
+
+  return <div {...commonProps}>{iconName}</div>;
 };
 
 LifeIcon.propTypes = {
   isHardCore: PropTypes.bool,
+  isFading: PropTypes.bool,
   backgroundColor: PropTypes.string,
   hardcoreBorderColor: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
-  iconName: PropTypes.oneOf([ 'heart', 'star' ]),
+  iconName: PropTypes.oneOf(Object.values(IconNameTypes)).isRequired,
 };
 
 export default LifeIcon;
