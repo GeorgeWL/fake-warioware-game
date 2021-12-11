@@ -8,6 +8,9 @@ export default {
   args: {
     iconName: IconNameTypes.HEART,
     size: 'medium',
+    /**
+    * Only applies on utf-8 one byte Emoji (e.g. ♥ ✔), utf16 + unicode (e.g. 👍,🎤) emojis will not get coloured 
+    */
     backgroundColor: '#fe1943',
     hardcoreBorderColor: 'gold',
   },

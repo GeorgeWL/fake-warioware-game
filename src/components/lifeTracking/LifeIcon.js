@@ -25,6 +25,10 @@ const LifeIcon = ({
 LifeIcon.propTypes = {
   isHardCore: PropTypes.bool,
   isFading: PropTypes.bool,
+  /**
+  * Only applies on utf-8 one byte Emoji (e.g. ♥,✔)
+  * utf16 + unicode (e.g. 👍,🎤) emojis will not get coloured 
+  */
   backgroundColor: PropTypes.string,
   hardcoreBorderColor: PropTypes.string,
   size: PropTypes.oneOf([ 'small', 'medium', 'large' ]),
