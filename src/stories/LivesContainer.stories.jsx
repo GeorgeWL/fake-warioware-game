@@ -25,6 +25,7 @@ export default {
     count: 3,
     isHardCore: false,
     isFlashing: false,
+    size: 'medium',
     iconName: IconNameTypes.CHECK
   }
 };
