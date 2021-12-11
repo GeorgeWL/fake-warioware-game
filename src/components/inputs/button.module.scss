@@ -8,11 +8,10 @@
   color: var(--color);
   cursor: pointer;
   display: inline-block;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1;
-  transition-duration: 0.8s, 0.8s, 0.2s;
-  transition-property: opacity, border-color, color, background-color;
+  transition-duration: 0.8s, 0.8s, 0.2s, 0.8s;
+  transition-property: opacity, border-color, color, background-color, width;
 
   &--small {
     font-size: 0.8rem;

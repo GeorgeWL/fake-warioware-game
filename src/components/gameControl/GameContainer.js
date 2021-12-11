@@ -9,7 +9,6 @@ import GameWrapper from './GameWrapper';
 const GameContainer = ({ children, gameDuration = 60 })=> {
   const [ isActive, setActive ] = useState(false);
   const [ lives, setLives ] = useState(3);
-  const [ isLivesFlashing, setLivesFlashing ] = useState(false);
   const [ timePercentage, setTimePercent ] = useState(1.0);
 
   return (
@@ -22,16 +21,9 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
             if(lives > 0){
               setLives(lives - 1);
             }
-            setLivesFlashing(false);
           }}
           onTimerTick={(percentage)=>{
             setTimePercent(percentage);
-            if(timePercentage === .5){
-              setLivesFlashing(true);
-            }
-            if(timePercentage === .1){
-              setLivesFlashing(false);
-            }
           }
           }
           totalTime={gameDuration}
@@ -40,8 +32,7 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
         <LivesContainer
           count={lives}
           size='small'
-          isFlashing={isLivesFlashing}
-          isFading={timePercentage === .08}
+          isFading={timePercentage === .2}
         />
       </div>
       <GameWrapper>
@@ -58,7 +49,7 @@ const GameContainer = ({ children, gameDuration = 60 })=> {
           }
         }}
       >
-        Start!
+        {lives <= 0 ? 'Restart?' : 'Start!'}
       </Button>
     </div>
   );
