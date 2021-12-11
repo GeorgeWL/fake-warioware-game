@@ -25,14 +25,16 @@ This application will contain a game screen with a timer and life tracking, the 
 ## Development Process
 
 ### pre-release
-until version 1.0.0 all development pushed directly onto `main` branch 
+
+until version 1.0.0 all development pushed directly onto `main` branch
 
 ### post-release
+
 1. all new dev must be in a new branch
-2. tested (manually and automated) 
-4. netlify will automatically build the branch to a temporary hosted URL, check the hosted version has no issues
-5. merge into `main` if certain no issues
-6. netlify will automatically build onto the project URL
+1. tested (manually and automated)
+1. netlify will automatically build the branch to a temporary hosted URL, check the hosted version has no issues
+1. merge into `main` if certain no issues
+1. netlify will automatically build onto the project URL
 
 ## Available Scripts
 

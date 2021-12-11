@@ -1,5 +1,5 @@
 import LivesContainer from '../components/lifeTracking/LivesContainer';
-import LifeIconStories from './LifeIcon.stories';
+import { IconNameTypes } from '../constants/IconNameTypes';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -10,12 +10,12 @@ export default {
       control: {
         type: 'radio',
         options: [ 'small', 'medium', 'large' ]
-      }
+      },
     },
     iconName: {
       control: {
-        type: 'radio',
-        options: [ 'heart', 'star' ]
+        type: 'select',
+        options: Object.values(IconNameTypes)
       }
     },
     backgroundColor: { control: 'color' },
@@ -24,7 +24,8 @@ export default {
   args: {
     count: 3,
     isHardCore: false,
-    ...LifeIconStories.args
+    isFlashing: false,
+    iconName: IconNameTypes.CHECK
   }
 };
 
